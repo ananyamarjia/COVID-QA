@@ -7,7 +7,9 @@ from time import time
 import requests
 
 class LanguageDetector():
-    def __init__(self, model = 'sil'):
+    new_contract('valid_model', lambda s: isinstance(s, str) and len(s)>0)
+    @contract(names=str: 'valid_model')
+    def __init__(self, model: str = 'sil') -> None:
         self.model = model
 
     def detect_lang_cld2(self, text):
