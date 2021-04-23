@@ -1,0 +1,3 @@
+import os
+
+DB_INDEX_AUTOCOMPLETE = os.getenv(“DB_INDEX_AUTOCOMPLETE”)
