@@ -11,7 +11,7 @@ langid.set_languages(['de', 'en'])  # ISO 639-1 codes
 #
 from backend import api
 
-DB_INDEX_AUTOCOMPLETE = "autocomplete"
+from .config import DB_INDEX_AUTOCOMPLETE
 
 router = APIRouter()
 
