@@ -13,11 +13,14 @@ class LanguageDetector():
     def detect_lang_cld2(self, text):
         pred = cld2.detect(text)[2][0]
         return pred[1], float(pred[2])
+    
+    def _get_probability(self, value):
+    return 100 * value
 
     def detect_lang_cld3(self, text):
         import cld3  # requires protobuf
         pred = cld3.get_language(text)
-        return pred.language, 100*pred.probability
+        return pred.language, self._get_probablity(pred.probability)
 
     def detect_lang_sil(self, text):
         algorithm = 'HMAC+SHA1'
