@@ -29,6 +29,8 @@ class MSTranslator():
             trans_text = response[0]['translations'][0]['text']
         return trans_text
 
+def get_filename(lang, faq_filename):
+    return f"MT_{lang}_{faq_filename}"
 
 def main():
     lang = "ar"
@@ -41,7 +43,7 @@ def main():
     df[f'answer_{lang}'] = df.apply(lambda x: ms_translator.translate(x.answer), axis=1)
 
     faq_filename = os.path.basename(faq_file)
-    df.to_csv(f"MT_{lang}_{faq_filename}")
+    df.to_csv(get_filename(lang, faq_filename)) 
 
 if __name__ == "__main__":
     main()
